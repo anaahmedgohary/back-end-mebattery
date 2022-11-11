@@ -39,32 +39,7 @@ App
     .use('/', routesHandler)
 
     // Requests 
-    .post("/createtable",
-        (req, res) =>
-        {
-            let sql = "CREATE TABLE mebattery(id int Auto_increment, date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, comment VARCHAR(255), level VARCHAR(5), PRIMARY KEY(id))";
-
-            db.query(sql, (err, result) =>
-            {
-                if (err) { throw err };
-                console.log(result);
-                res.send("Table Created! Success")
-            })
-        }
-    )
     
-    .get("/findtroy", (req, res) =>
-    {
-        let sql = 'INSERT INTO mebattery SET ?';
-        let post = { comment: "firstcomment", level: 99 };
-
-        db.query(sql, post, (err, result) =>
-        {
-            if (err) { throw err };
-            console.log(result);
-            res.send('inserted into tabel post');
-        })
-    })    
 
 
 
