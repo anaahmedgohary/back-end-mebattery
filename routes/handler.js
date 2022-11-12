@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { SlimNodeMySQL } = require('slim-node-mysql');
-const mysql = require('mysql2');
+
 // const { json } = require('body-parser');
 // const database = new SlimNodeMySQL(env.database);
 
@@ -14,17 +13,7 @@ const mysql = require('mysql2');
 // });
 
 
-require("dotenv").config();
-const db = mysql.createConnection(process.env.DATABASE_URL);
 
-
-db.connect(
-    (err) =>
-    {
-        if (err) { throw err; }
-        console.log('DB Connectd! ok');
-    }
-);
 
 router
     .get('/api', async (req, res) =>
@@ -130,39 +119,7 @@ router
     })
 
     // portfolio messager from netlify
-    .post("/portfoliomessage", async (req, res) =>
-    {
-        let sqlcommand = "INSERT INTO portfoliomsg SET ?";
-        let body = req.body;
-        // let message = body.message;
-        // let { name, email } = body;
-        let name = await body.name;
-        let email = await body.email;
-        let message = await body.message;
-
-        let post = { name: `${name}`, email: `${email}`, message: `${message}` };
-
-        let oldpost = { name: "alex", email: "iou", message: "whyyes" }
-
-        db.query(sqlcommand, post, (err, result) =>
-        {
-            if (err) { throw err; };
-            console.log(result);
-            res.json("req.body.name");
-        })
-
-        // await db.execute(`
-        //     INSERT INTO portfoliomsg(name, email, message) VALUES(
-        //         @name, @email, @message
-        //     )
-        // `, {
-        //     name: body.name,
-        //     email: body.email,
-        //     message: body.message
-        // });
-
-        // res.json(body);
-    });
+    
 
 
 
