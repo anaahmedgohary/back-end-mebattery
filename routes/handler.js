@@ -36,7 +36,7 @@ router
         try
         {
            // res.status(200).send(arrofobj);
-            console.log("sucesssesefs");
+            console.log("tweet sucess");
            // let body = await res.data.body.name;
             res.json({
                 status: 200,
@@ -147,7 +147,7 @@ router
         db.query(sqlcommand, post, (err, result) =>
         {
             if (err) { throw err; };
-            console.log("body");
+            console.log(result);
             res.json("req.body.name");
         })
 
