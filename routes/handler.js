@@ -27,7 +27,7 @@ db.connect(
 );
 
 router
-    .get('/twwetes', async (req, res) =>
+    .get('/', async (req, res) =>
     {
         let obj = { name: "isname", age: "isage" };
         let arrofobj = [{man:"iuy"},{man:"qwe"}]
