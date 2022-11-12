@@ -12,17 +12,7 @@ const router = express.Router();
 //     database: 'node24db'
 // });
 
-require("dotenv").config();
-const db = mysql.createConnection(process.env.DATABASE_URL);
 
-
-db.connect(
-    (err) =>
-    {
-        if (err) { throw err; }
-        console.log('DB Connectd! ok');
-    }
-);
 
 
 
@@ -56,26 +46,7 @@ router
 
     })
 
-    .get("/lalam", (req, res) =>
-    {
-        let showes = ["aaaaa", "qqqqqqqq"];
-
-        res.json(showes);
-
-    })
-
-    .get("/routerpost", async (req, res) =>
-    {
-        let sql = 'INSERT INTO mebattery SET ?';
-        let post = { comment: "routercomment", level: 'cook' };
-
-      await db.query(sql, post, (err, result) =>
-        {
-            if (err) { throw err };
-            console.log(result);
-            res.send('inserted into tabel post');
-        })
-    })
+    
 
     .post("/createtable",
         (req, res) =>
@@ -113,6 +84,16 @@ router
         })
     })
 
+    
+
+    .get("/fine", (req, res) =>
+    {
+        let showes = ["aaaaa", "qqqqqqqq"];
+
+        res.json(showes);
+
+    })
+
     .get("/savednotes", async (req, res) =>
     {
         let sqlCommand = "SELECT * FROM mebattery";
@@ -125,6 +106,8 @@ router
             res.send(result)
         })
     })
+
+    
 
 
 

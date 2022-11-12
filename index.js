@@ -1,11 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const mysql = require('mysql2');
+// const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 // const mysql = require('mysql2');
 // router
-const router = require('./routes/handler');
+const portfoliomsg = require('./routes/portfoliomsg');
 
 
 // mysql start
@@ -23,17 +23,17 @@ db.connect(
     }
 ) */
 
-require("dotenv").config();
-const db = mysql.createConnection(process.env.DATABASE_URL);
+// require("dotenv").config();
+// const db = mysql.createConnection(process.env.DATABASE_URL);
 
 
-db.connect(
-    (err) =>
-    {
-        if (err) { throw err; }
-        console.log('DB Connectd! ok');
-    }
-);
+// db.connect(
+//     (err) =>
+//     {
+//         if (err) { throw err; }
+//         console.log('DB Connectd! ok');
+//     }
+// );
 
 
 // App Start
@@ -42,7 +42,8 @@ const port = process.env.PORT || 8080;
 
 
 app.use(cors());
-app.use('/api', router);
+//app.use('/api', router);
+app.use("/portfolio", portfoliomsg)
    // .use(morgan('dev'))
    // .use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }));
