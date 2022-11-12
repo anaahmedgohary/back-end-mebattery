@@ -51,7 +51,7 @@ app.use(bodyParser.json())
 
     // Requests
 
-app.get("/", (req, res) =>
+    app.get("/fine", (req, res) =>
 {
     let showes = ["aaaaa", "qqqqqqqq"];
     
