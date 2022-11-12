@@ -42,34 +42,26 @@ const port = process.env.PORT || 8080;
 
 
 app.use(cors());
-app.use('/', router)
+app.use('/api', router);
    // .use(morgan('dev'))
    // .use(express.static('public'))
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
     
 
     // Requests
 
-    app.get("/fine", (req, res) =>
+app
+    .get("/fine", (req, res) =>
     {
     let showes = ["aaaaa", "qqqqqqqq"];
     
     res.json(showes);
 
     })
-
-    
-
-
-
-    
-
-    
-
     
 // portfolio messager from netlify
-app.post("/portfoliomessage", async (req, res) =>
+    .post("/portfoliomessage", async (req, res) =>
     {
         let sqlcommand = "INSERT INTO portfoliomsg SET ?";
         let body = req.body;
@@ -92,16 +84,6 @@ app.post("/portfoliomessage", async (req, res) =>
 
 
     })
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -44,6 +44,14 @@ router
 
     })
 
+    .get("/lalam", (req, res) =>
+    {
+        let showes = ["aaaaa", "qqqqqqqq"];
+
+        res.json(showes);
+
+    })
+
     .get("/routerpost", (req, res) =>
     {
         let sql = 'INSERT INTO mebattery SET ?';
