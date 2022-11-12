@@ -27,7 +27,7 @@ db.connect(
 );
 
 router
-    .get('/', async (req, res) =>
+    .get('/api', async (req, res) =>
     {
         let obj = { name: "isname", age: "isage" };
         let arrofobj = [{man:"iuy"},{man:"qwe"}]

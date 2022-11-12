@@ -24,16 +24,16 @@ db.connect(
 
 
 // App Start
-const App = express();
+const app = express();
 const port = process.env.PORT || 8080;
 
-App
+app
     .use(cors())
     .use(morgan('dev'))
     .use(express.static('public'))
     .use(bodyParser.urlencoded({ extended: false }))
     .use(bodyParser.json())
-    .use('/', routesHandler)
+    .use('/api', routesHandler)
 
     // Requests 
     
