@@ -30,7 +30,7 @@ const port = process.env.PORT || 8080;
 app
     .use(cors())
     .use(morgan('dev'))
-    .use(express.static('public'))
+   // .use(express.static('public'))
     .use(bodyParser.urlencoded({ extended: false }))
     .use(bodyParser.json())
     .use('/api', routesHandler)
