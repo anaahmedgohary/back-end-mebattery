@@ -6,9 +6,6 @@ const morgan = require('morgan');
 // router
 const routesHandler = require('./routes/handler');
 
-// optional
-const { SlimNodeMySQL } = require('slim-node-mysql'); //how to use ↓
-// const database = new SlimNodeMySQL(env.database);
 
 // mysql start
 /* const db = mysql.createConnection({
