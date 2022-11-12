@@ -12,6 +12,18 @@ const router = express.Router();
 //     database: 'node24db'
 // });
 
+require("dotenv").config();
+const db = mysql.createConnection(process.env.DATABASE_URL);
+
+
+db.connect(
+    (err) =>
+    {
+        if (err) { throw err; }
+        console.log('DB Connectd! ok');
+    }
+);
+
 
 
 

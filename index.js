@@ -59,6 +59,19 @@ app
     res.json(showes);
 
     })
+
+    .get("/savednotes", async (req, res) =>
+    {
+        let sqlCommand = "SELECT * FROM mebattery";
+
+        await db.query(sqlCommand, (err, result) =>
+        {
+            if (err) { throw err };
+            console.log(result);
+            // res.send(JSON.stringify(result));
+            res.send(result)
+        })
+    })
     
 // portfolio messager from netlify
     .post("/portfoliomessage", async (req, res) =>
