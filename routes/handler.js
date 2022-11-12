@@ -16,7 +16,7 @@ const router = express.Router();
 
 
 router
-    .get('/api', async (req, res) =>
+    .get('/', async (req, res) =>
     {
         let obj = { name: "isname", age: "isage" };
         let arrofobj = [{man:"iuy"},{man:"qwe"}]

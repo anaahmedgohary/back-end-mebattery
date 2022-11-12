@@ -40,18 +40,18 @@ db.connect(
 const app = express();
 const port = process.env.PORT || 8080;
 
-app
-    .use(cors())
-    .use('/api', router)
-    .use(morgan('dev'))
+
+app.use(cors());
+app.use('/api', router)
+   // .use(morgan('dev'))
    // .use(express.static('public'))
-    .use(bodyParser.urlencoded({ extended: false }))
-    .use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
     
 
     // Requests
 
-    .get("/savednotes", (req, res) =>
+app.get("/savednotes", (req, res) =>
     {
         let sqlCommand = "SELECT * FROM mebattery";
 
@@ -64,7 +64,7 @@ app
         })
     })
 
-    .post("/commentlevel", (req, res) =>
+app.post("/commentlevel", (req, res) =>
     {
         let sqlCommand = "INSERT INTO mebattery SET ?";
 
@@ -115,7 +115,7 @@ app
 
     
 
-    .post("/portfoliomessage", async (req, res) =>
+app.post("/portfoliomessage", async (req, res) =>
     {
         let sqlcommand = "INSERT INTO portfoliomsg SET ?";
         let body = req.body;
