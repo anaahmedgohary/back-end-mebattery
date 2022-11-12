@@ -52,12 +52,12 @@ router
 
     })
 
-    .get("/routerpost", (req, res) =>
+    .get("/routerpost", async (req, res) =>
     {
         let sql = 'INSERT INTO mebattery SET ?';
         let post = { comment: "routercomment", level: 'cook' };
 
-        db.query(sql, post, (err, result) =>
+      await db.query(sql, post, (err, result) =>
         {
             if (err) { throw err };
             console.log(result);
@@ -101,11 +101,11 @@ router
         })
     })
 
-    .get("/savednotes", (req, res) =>
+    .get("/savednotes", async (req, res) =>
     {
         let sqlCommand = "SELECT * FROM mebattery";
 
-        db.query(sqlCommand, (err, result) =>
+        await db.query(sqlCommand, (err, result) =>
         {
             if (err) { throw err };
             console.log(result);
