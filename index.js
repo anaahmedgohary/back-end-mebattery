@@ -65,7 +65,7 @@ app
     {
         let sqlCommand = "SELECT * FROM mebattery";
 
-        await db.query(sqlCommand, (err, result) =>
+        let query = await db.query(sqlCommand, (err, result) =>
         {
             if (err) { throw err };
             console.log(result);
@@ -89,7 +89,7 @@ app
 
         let oldpost = { name: "alex", email: "iou", message: "whyyes" }
 
-        db.query(sqlcommand, post, (err, result) =>
+        let query = await db.query(sqlcommand, post, (err, result) =>
         {
             if (err) { throw err; };
             console.log(result);

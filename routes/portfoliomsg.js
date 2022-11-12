@@ -38,7 +38,7 @@ router
         let sql = 'INSERT INTO mebattery SET ?';
         let post = { comment: "routercomment", level: 'cook' };
 
-        db.query(sql, post, (err, result) =>
+        let query = db.query(sql, post, (err, result) =>
         {
             if (err) { throw err };
             console.log(result);
@@ -46,16 +46,16 @@ router
         })
     })
 
-    .get("/savednotes", async (req, res) =>
+    .get("/savednotes", (req, res) =>
     {
         let sqlCommand = "SELECT * FROM mebattery";
 
-        await db.query(sqlCommand, (err, result) =>
+        let query = db.query(sqlCommand, (err, result) =>
         {
             if (err) { throw err };
             console.log(result);
             // res.send(JSON.stringify(result));
-            res.send(result)
+             res.json(result)
         })
     })
 
@@ -76,7 +76,7 @@ router
 
         let oldpost = { name: "alex", email: "iou", message: "whyyes" }
 
-        db.query(sqlcommand, post, (err, result) =>
+        let query = db.query(sqlcommand, post, (err, result) =>
         {
             if (err) { throw err; };
             console.log(result);

@@ -53,7 +53,7 @@ router
         {
             let sql = "CREATE TABLE mebattery(id int Auto_increment, date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, comment VARCHAR(255), level VARCHAR(5), PRIMARY KEY(id))";
 
-            db.query(sql, (err, result) =>
+            let query = db.query(sql, (err, result) =>
             {
                 if (err) { throw err };
                 console.log(result);
@@ -72,7 +72,7 @@ router
 
         let theData = { comment: `${comment}`, level: `${level}` };
 
-        db.query(sqlCommand, theData, (err, result) =>
+        let query = db.query(sqlCommand, theData, (err, result) =>
         {
             if (err)
             {
@@ -98,7 +98,7 @@ router
     {
         let sqlCommand = "SELECT * FROM mebattery";
 
-        await db.query(sqlCommand, (err, result) =>
+        let query = await db.query(sqlCommand, (err, result) =>
         {
             if (err) { throw err };
             console.log(result);
