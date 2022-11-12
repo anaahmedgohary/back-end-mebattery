@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql2");
+const cors = require('cors');
+// const mysql = require('mysql2');
+const bodyParser = require('body-parser');
 
 require("dotenv").config();
 const db = mysql.createConnection(process.env.DATABASE_URL);
@@ -13,6 +16,11 @@ db.connect(
 );
 
 router
+    .use(cors())
+    .use(bodyParser.urlencoded({ extended: false }))
+    .use(bodyParser.json())
+    
+    
     .get('/', async (req, res) =>
     {
         try
@@ -62,25 +70,25 @@ router
 
 
     // portfolio messager from netlify
-    .post("/portfoliomessage", async (req, res) =>
+    .post("/portfoliomessage", (req, res) =>
     {
-        let sqlcommand = "INSERT INTO portfoliomsg SET ?";
+        let sql = 'INSERT INTO portfoliomsg SET ?';
         let body = req.body;
         // let message = body.message;
         // let { name, email } = body;
-        let name = await body.name;
-        let email = await body.email;
-        let message = await body.message;
+        let name =  body.name;
+        let email =  body.email;
+        let message =  body.message;
 
         let post = { name: `${name}`, email: `${email}`, message: `${message}` };
 
-        let oldpost = { name: "alex", email: "iou", message: "whyyes" }
+        // let oldpost = { name: "alex", email: "iou", message: "whyyes" }
 
-        let query = db.query(sqlcommand, post, (err, result) =>
+        let query = db.query(sql, post, (err, result) =>
         {
             if (err) { throw err; };
             console.log(result);
-            res.json("Thank You.\nI'll get back to you ASAP.");
+            res.send("Thank You. I'll get back to you ASAP.");
         })
 
 
