@@ -42,7 +42,7 @@ const port = process.env.PORT || 8080;
 
 
 app.use(cors());
-app.use('/api', router)
+app.use('/', router)
    // .use(morgan('dev'))
    // .use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -50,6 +50,14 @@ app.use(bodyParser.json())
     
 
     // Requests
+
+app.get("/", (req, res) =>
+{
+    let showes = ["aaaaa", "qqqqqqqq"];
+    
+    res.json(showes);
+
+    })
 
 app.get("/savednotes", (req, res) =>
     {
