@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 // const mysql = require('mysql2');
 // router
-const routesHandler = require('./routes/handler');
+const router = require('./routes/handler');
 
 
 // mysql start
@@ -42,7 +42,7 @@ const port = process.env.PORT || 8080;
 
 app
     .use(cors())
-    .use('/api', routesHandler)
+    .use('/api', router)
     .use(morgan('dev'))
    // .use(express.static('public'))
     .use(bodyParser.urlencoded({ extended: false }))

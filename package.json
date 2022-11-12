@@ -2,7 +2,7 @@
   "name": "mebattery-back",
   "version": "1.0.0",
   "description": "mebattery-back-express",
-  "main": "app.js",
+  "main": "index.js",
   "engines": {
     "node": "14.x"
   },
