@@ -63,7 +63,7 @@ router
             if (err) { throw err };
             console.log(result);
             // res.send(JSON.stringify(result));
-             res.json(result)
+            res.send(result)
         })
     })
 
