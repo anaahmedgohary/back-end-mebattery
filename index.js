@@ -4,8 +4,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 // const mysql = require('mysql2');
-// router
+
+// routers
 const portfoliomsg = require('./routes/portfoliomsg');
+const mebattery = require('./routes/mebattery');
 
 
 // mysql start
@@ -43,7 +45,8 @@ const port = process.env.PORT || 8080;
 
 app.use(cors());
 //app.use('/api', router);
-app.use("/portfolio", portfoliomsg)
+app.use("/portfolio", portfoliomsg);
+app.use("/mebattery", mebattery);
    // .use(morgan('dev'))
    // .use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }));

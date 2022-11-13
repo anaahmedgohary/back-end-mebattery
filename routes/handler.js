@@ -80,7 +80,7 @@ router
                 res.send("problems faced along the way! \nPlease try again later.");
             };
             console.log(result);
-            res.send("New Comment Saved Successfully");
+            res.send("New Note Saved Successfully");
         })
     })
 

@@ -26,7 +26,7 @@ router
         try
         {
             res.json({status: 200,
-                body: "Welcome To portfolio messenger",
+                body: "Welcome To Mebattery",
             data:"Please Start Routing"} )   
         }
         catch(err){console.log(err)}
@@ -35,7 +35,7 @@ router
 
     .get("/lalam", (req, res) =>
     {
-        let showes = ["llllllll", "123456789"];
+        let showes = ["aaaaa", "qqqqqqqq"];
 
         res.json(showes);
 
@@ -43,8 +43,8 @@ router
 
     .get("/routerpost", (req, res) =>
     {
-        let sql = 'INSERT INTO portfoliomsg SET ?';
-        let post = { name: "routercomment", email: 'theemailato', message: 'thmessagato' };
+        let sql = 'INSERT INTO mebattery SET ?';
+        let post = { comment: "routercomment", level: 'cook' };
 
         let query = db.query(sql, post, (err, result) =>
         {
@@ -56,7 +56,7 @@ router
 
     .get("/savednotes", (req, res) =>
     {
-        let sqlCommand = "SELECT * FROM portfoliomsg";
+        let sqlCommand = "SELECT * FROM mebattery";
 
         let query = db.query(sqlCommand, (err, result) =>
         {
@@ -67,43 +67,31 @@ router
         })
     })
 
-
-
-    // portfolio messager from netlify
-    .post("/portfoliomessage", (req, res) =>
+    .post("/commentlevel", (req, res) =>
     {
-        let sql = 'INSERT INTO portfoliomsg SET ?';
-        let body = req.body;
-        // let message = body.message;
-        // let { name, email } = body;
-        let name =  body.name;
-        let email =  body.email;
-        let message =  body.message;
+        let sqlCommand = "INSERT INTO mebattery SET ?";
 
-        let post = { name: `${name}`, email: `${email}`, message: `${message}` };
+        let reqBody = req.body;
+        let comment = reqBody.comment;
+        let level = reqBody.level;
 
-        // let oldpost = { name: "alex", email: "iou", message: "whyyes" }
+        let theData = { comment: `${comment}`, level: `${level}` };
 
-        let query = db.query(sql, post, (err, result) =>
+        let query = db.query(sqlCommand, theData, (err, result) =>
         {
-            if (err) { throw err; };
+            if (err)
+            {
+                throw err;
+                res.send("problems faced along the way! \nPlease try again later.");
+            };
             console.log(result);
-            res.send("Thank You. I'll get back to you ASAP.");
+            res.send("New Note Saved Successfully");
         })
-
-
     })
 
 
 
-
-
-
-
-
-
-
-
+    
 
 
 
